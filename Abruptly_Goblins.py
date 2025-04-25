@@ -21,5 +21,8 @@ add_gamer({'name':'Michel Trujillo','availability': ["Monday", "Tuesday", "Wedne
 # Initialize coun_availability dictionary with build_daily_frequency_table()
 count_availability = build_daily_frequency_table()
 calculate_availability(gamers, count_availability)
+
+print(find_best_night(count_availability))
+
 print(count_availability)
 
