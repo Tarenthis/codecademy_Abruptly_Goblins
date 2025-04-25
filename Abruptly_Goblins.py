@@ -1,17 +1,10 @@
-# add_gamer adds a new gamer to the gamers dictionary. 
-# Each gamer should be represented by a dict <name>:<availbility>
-def add_gamer(gamer, gamers_list):
-    if gamer.get("name") and gamer.get("availability"):
-        gamers_list.append(gamer)
-    else:
-        print("Gamer missing critical details")
+from ag_functions import *
 
-
-# Users attending game night 
+# Initialize list of empty list that will contain gamers attending game night 
 gamers = []
 
-# Add first gamer
-kimberly = {"name":"Kimberly Warner", "availability":["Mondays", "Tuesdays", "Fridays"]}
+# Define and add first gamer using add_gamer function
+kimberly = {"name":"Kimberly Warner", "availability":["Monday", "Tuesday", "Friday"]}
 add_gamer(kimberly, gamers)
 
 # Add additional gamers
@@ -25,4 +18,8 @@ add_gamer({'name':'Crystal Brewer','availability': ["Thursday", "Friday", "Satur
 add_gamer({'name':'James Barnes Jr.','availability': ["Tuesday", "Wednesday", "Thursday", "Sunday"]}, gamers)
 add_gamer({'name':'Michel Trujillo','availability': ["Monday", "Tuesday", "Wednesday"]}, gamers)
 
-print(gamers)
+# Initialize coun_availability dictionary with build_daily_frequency_table()
+count_availability = build_daily_frequency_table()
+calculate_availability(gamers, count_availability)
+print(count_availability)
+
