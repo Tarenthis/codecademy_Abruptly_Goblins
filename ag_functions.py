@@ -65,3 +65,26 @@ def available_on_night(gamers_list, day):
         if day in gamer.get("availability"):
             available_gamers.append(gamer)
     return available_gamers
+
+# Define email format
+form_email = """
+Greetings {name}! The Secret Sorcerey Society has decided that we shall convene on {day_of_week} to engage in a battle of {game}. 
+
+We hope you will be able to join us and await your arrival. 
+
+Magically Yours,
+The Secret Sorcerey Society
+"""
+
+def send_email(gamers_who_can_attend, day, game):
+    """
+    Print `form_email` for each gamer in `gamers_who_can_attend` with their 'name' and appropriate `day` and `game`.
+    Args:
+        gamers_who_can_attend: List of gamer dictionaries who can attend on 'day'
+        day: The best night for gamer availabilities 
+        game: Name of the game being played
+    Output:
+        Email for each gamer attending that day 
+    """
+    for gamer in gamers_who_can_attend:
+        print(form_email.format(name=gamer["name"], day_of_week=day, game=game))
