@@ -28,10 +28,27 @@ game_night = find_best_night(count_availability)
 # Find the gamers that are available on game_night 
 attending_game_night = available_on_night(gamers, game_night)
 
-
-
-print(count_availability)
-print(game_night)
-print(attending_game_night)
-print("\n\n Emails:")
+# Send emails to those who can attend game_night
+print("First game night emails:")
 send_email(attending_game_night, game_night, "Abruptly Goblins!")
+
+# Afterward: 
+# List of gamers who cannot attend game_night
+unable_to_attend_best_night = [gamer for gamer in gamers if game_night not in gamer['availability']]
+
+# Build a second frequency table for second_night
+second_night_availability = build_daily_frequency_table()
+
+# Calculate availability of gamers who could not attend game_night
+calculate_availability(unable_to_attend_best_night, second_night_availability)
+
+# Find the second best game night
+second_night = find_best_night(second_night_availability)
+
+# Create list of those available on second_night (including those who attended first)
+available_second_game_night = available_on_night(gamers, second_night)
+
+# Send an email to everyone who can attend the second night 
+print("————————————————————————————————————————————————————————————————————")
+print("Second game night emails:")
+send_email(available_second_game_night, second_night, "Abruptly Goblins!")
